@@ -8,7 +8,7 @@ gem "colorize"
 gem "formatador"
 
 group :test do
-  gem "minitest"
+  gem "minitest", require: "minitest/autorun"
   gem "pry"
 end
 

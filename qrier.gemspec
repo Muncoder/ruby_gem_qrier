@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["munirchittagong@yahoo.com"]
 
   spec.summary = "Email application in Ruby."
-  spec.description = "Email application in Ruby."
+  spec.description = "Email application in Ruby. Fetch and send email"
   spec.homepage = "https://example.com"
   spec.required_ruby_version = ">= 2.6.0"
 
