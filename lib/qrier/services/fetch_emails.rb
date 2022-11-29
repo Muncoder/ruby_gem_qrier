@@ -46,7 +46,10 @@ module Qrier
                                 sent_at: Time.parse(item[:envelope].date),
                                 body: item[:body].force_encoding('utf-8'),
                               })
+
       end
+      # require 'pry'; binding.pry
+
     end
 
     def address(field)
