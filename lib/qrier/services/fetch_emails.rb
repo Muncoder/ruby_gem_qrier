@@ -1,11 +1,17 @@
 module Qrier
   class FetchEmails
+    def initialize(options={})
+      @folder = options[:folder] || "INBOX"
+      @imap = options[:imap]
+      @keep_alive = options[:keep_alive] || false
+    end
+
     def execute
       connect
       fetch_emails
       transform
     ensure
-      @imap.disconnect
+      @imap.disconnect unless @keep_alive
     end
 
     def emails
@@ -15,9 +21,10 @@ module Qrier
     private
 
     def connect
-      @imap = Net::IMAP.new ENV['QRIER_SERVER'], 993, true
-      @imap.login ENV['QRIER_USER'], ENV['QRIER_PWD']
-
+      unless @imap
+        @imap = Net::IMAP.new ENV['QRIER_SERVER'], 993, true
+        @imap.login ENV['QRIER_USER'], ENV['QRIER_PWD']
+      end
     end
 
     def fetch_emails
